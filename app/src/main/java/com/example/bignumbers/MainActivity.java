@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -30,13 +31,18 @@ public class MainActivity extends AppCompatActivity {
 
         leftButton.setOnClickListener(v -> {
             if (getLeft() > getRight()) this.setScore(this.getScore() + 1);
-            else this.setScore(0);
+            else {
+                this.setScore(0);
+                Toast.makeText(getApplicationContext(),"Wrong !! Score Reset", Toast.LENGTH_SHORT).show();
+            }
             resetNumbers(leftButton, rightButton);
         });
 
         rightButton.setOnClickListener(v -> {
-            if (getLeft() > getRight()) this.setScore(0);
-            else this.setScore(this.getScore() + 1);
+            if (getLeft() > getRight()) {
+                this.setScore(0);
+                Toast.makeText(getApplicationContext(),"Wrong !! Score Reset", Toast.LENGTH_SHORT).show();
+            } else this.setScore(this.getScore() + 1);
             resetNumbers(leftButton, rightButton);
         });
 
